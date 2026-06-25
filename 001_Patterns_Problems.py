@@ -344,3 +344,74 @@ def Q19():
                 print(" "*d,end='') 
             print("*"*i)
             d = d-2
+# ----------------------------------
+
+20.
+#  *        *
+#  **      **
+#  ***    ***
+#  ****  ****
+#  **********
+#  ****  ****
+#  ***    ***
+#  **      **
+#  *        *
+
+def Q20():
+    s = 8
+    for i in range(1,6):
+        print("*"*i,end="")
+        print(" "*(s),end="")
+        print("*"*i)
+        s = s-2 
+        # print()
+
+    c = 4
+    s = 2
+    for i in range(1,5):
+        print("*"*c,end="")
+        print(" "*s,end="")
+        print("*"*c)
+        s = s+2
+        c = c-1
+# -----------------------------------------
+
+# 21.
+#  ****
+
+#  *  *
+
+#  *  *
+
+#  ****
+
+def Q21():
+    print("*"*4)
+    print()
+    print("*","","*")
+    print()
+    print("*","","*")
+    print()
+    print("*"*4)
+
+# --------------------------------------
+# 22.
+#  4444444
+#  4333334
+#  4322234
+#  4321234
+#  4322234
+#  4322234
+
+def Q22():
+    for i in range(2 * 4 - 1):
+        for j in range(2 * 4 - 1):
+            top = i
+            left = j
+            right = (2 * 4 - 2) - j
+            down = (2 * 4 - 2) - i
+
+            value = 4 - min(min(top, down), min(left, right))
+            print(value, end=" ")
+        print()
+
