@@ -133,20 +133,84 @@ def Palindrome2(x):
 # -------------------------Concept4---------------------------
 
 # Amstrong Number 
+def AmstrongNumber(x):
+    expo = len(str(x))
+    copy = x
+    new = 0
 
-x = 1634
-expo = len(str(x))
-copy = x
-new = 0
-
-while(copy):
-    number = copy % 10 
-    copy = int(copy / 10)
-    new = new + (number**expo)
-if new == x:
-    print("Is an Amstrong Number.")
-else:
-    print("Is not an Amstrong Number.")
+    while(copy):
+        number = copy % 10 
+        copy = int(copy / 10)
+        new = new + (number**expo)
+    if new == x:
+        print("Is an Amstrong Number.")
+    else:
+        print("Is not an Amstrong Number.")
 
         
-        
+# --------------------Concept5-------------------
+
+# Print all divisor
+
+# time complexity = O(n)
+def printDivisor1(n):
+    l = []
+    for i in range(1,n+1):
+        if n % i == 0:
+            l.append(i)
+    print(l)
+
+# optimized code time complexity O(sqrt(n)) + O (nlogn)
+def printDivisor2(n):
+    l = []
+    # O(sqrt(n)) for loop
+    for i in range(1,int((n**(1/2)) + 1)):
+        if n % i == 0:
+            l.append(i)
+            if n / i != i:
+                l.append(int(n/i))
+                # O (nlogn) for sorting
+                l.sort()
+    print(l) 
+    
+# -------------------Concept6----------------------------
+
+# Prime Numbers check 
+
+# time complexity = O(n)
+def isprime1(n):
+    for i in range (1,n+1):
+        if n%i == 0 and i>1 and i<n:
+            print("NOT Prime")
+            return False
+    print("Is a Prime Number")
+    return True
+
+
+# optimized code time complexity = O(sqrt(n))
+def isprime2(n):
+    c = 0
+    for i in range (1,int(n**0.5)+1):
+        if n%i == 0:
+            c = c+1
+            if n/i != 1 : 
+                c = c+1
+        if c > 2:
+            print("Not Prime")
+            return False
+    print("is prime")
+    return True
+
+# ------------------------Concept7-----------------
+
+# highest common divisor  HCF
+# Greatest Common Divisor GCD
+
+# time complexity O(min(n1,n2))
+def findGCD(n1,n2):
+    gcd = int()
+    for i in range(min(n1,n2),0,-1):
+        if n1 % i == 0 and n2 % i == 0:
+            gcd = i
+            print(gcd)
+            return gcd
