@@ -69,6 +69,114 @@ def print1_N(n):
         print1_N(n)
 
 # print1_N(11)
+# --------------------------------------------------------------------
 
+# Print N to 1 using Recursion
+
+def printN_1(n):
+    count = n 
+    if count == 0:
+        return 
+    else:
+        print(count)
+        count -= 1
+        printN_1(count)
+
+# printN_1(11) 
+
+# ------------------------------------------------------------------
+
+# Sum of First N Numbers
+
+sum = 0
+count = 1
+def sum_N1(n):
+    global sum
+    global count 
+
+    if count > n:
+        print(f"Sum : {sum}")
+        return 
+    else:
+        sum += count 
+        count +=1 
+
+        sum_N1(n)
+        
+
+# sum_N1(4)
+
+# parmetrized way 
+
+def sum_N2(i,sum):
+    if (i < 1):
+        print(f"Sum : {sum}")
+        return
+    sum_N2(i-1,sum+i)
+
+# sum_N2(3,0)
+
+# function way 
+
+def sum_N3(n):
+    if (n == 0):
+        return 0
+    return n + sum_N3(n-1)
+
+# print(sum_N3(4))
+
+# -------------------------------------------
+
+# Factorial of a given number
+
+# time complexity O(n)
+# Space complexity O(n)
+# usnig fucntion method: 
+def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n-1)
+
+# print(factorial(5))
+
+# ---------------------------------------
+
+# reverse an array 
+
+# with out using recursion or loops
+def reverse1(l):
+    return l[::-1]
+
+# print(reverse([1,2,3,4,5,6]))
+
+# 1. using recursion by swaping  
+
+def reverse2(l,head,tail):
+    if head >= tail:
+        return l
+    else:
+        temp = l[head]
+        l[head] = l[tail]
+        l[tail] =temp
+
+        return reverse2(l,head+1,tail-1)
+
+# li = [1,2,3,5,2]
+# print(reverse2(li,0,len(li)-1))
+
+# 2. reverse using one pointer 
+
+def reverse3(l,head=0):
+    length = len(l)
+    if head >= length // 2:
+        return l 
+    else:
+        temp = l[head]
+        l[head] = l[length-head-1]
+        l[length-head-1] = temp
+
+        return reverse3(l,head+1)
+
+# print(reverse3([1,2,3,5,2]))
 
 
