@@ -179,4 +179,40 @@ def reverse3(l,head=0):
 
 # print(reverse3([1,2,3,5,2]))
 
+# ---------------------------------------------------
+
+# palandrome the string  array 
+def palindrome_string(original, new=None, head=0):
+    if new is None:
+        new = original.copy()
+
+    length = len(new)
+
+    if head >= length // 2:
+        if original == new:
+            return f"{original} is Palindrome"
+        else:
+            return f"{original} is not Palindrome"
+    
+    temp = new[head]
+    new[head] = new[length-head-1] 
+    new[length-head-1] = temp
+
+    return palindrome_string(original, new, head+1)
+
+# print(palindrome_string(['a','b','c','a']))
+# print(palindrome_string(['a','b','a']))
+
+# ----------------------------------------------------------
+
+# fibonacci Numbers
+
+def fibonacci(n):
+    if n <= 1:
+        return n 
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# print(fibonacci(8))
+
+# --------------------------------------------------------
 
