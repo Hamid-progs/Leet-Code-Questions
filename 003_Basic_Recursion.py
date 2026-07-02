@@ -203,6 +203,30 @@ def palindrome_string(original, new=None, head=0):
 # print(palindrome_string(['a','b','c','a']))
 # print(palindrome_string(['a','b','a']))
 
+# leet code Question check the string is palandrorm or not:
+# this question is not solved by recursion
+import re
+
+def isPalindrome( s):
+    s =  re.sub(r"[^a-zA-Z0-9]", "", s).lower()
+    if s == s[::-1]:
+        return True
+    return False 
+    
+# by recursion method
+def p(s,c=1):
+    if c == 1:
+        s = re.sub(r"[^a-zA-Z0-9]", "", s).lower()
+        c = c-1
+    if len(s) <= 1:
+        return True 
+    if s[0] != s[-1]:
+        return False 
+    return p(s[1:-1],c)
+
+s = "A man, a plan, a canal: Panama"
+# print(p(s))
+
 # ----------------------------------------------------------
 
 # fibonacci Numbers
