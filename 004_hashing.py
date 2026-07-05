@@ -1,4 +1,4 @@
-# the below hashing function are examples which mainly count int ,characters usin hashing!
+# the below hashing function are examples which mainly count frequencies int ,characters usin hashing!
 
 def hashing_1(a = [1,3,2,1,3]):
     hash = [0] * 13  # it will create list with 13 zeros index upto 12
@@ -78,3 +78,24 @@ def hashing_4(s = 'abcdabcj'):
         q -= 1
 
 # hashing_4()
+
+# ---------------------------------------------------------
+
+#  highest occuring element in an array
+def hashing_5(a = [1,3,2,2,2,1,53]):
+    length = max(a)  + 1 
+    hash = [0] * length  # it will create list with 13 zeros index upto 12
+
+    # hash computation
+    for  i in range(0,len(a)):
+        hash[a[i]] += 1
+
+    # fetching count
+    max_value = max(hash)
+    max_index = hash.index(max_value)
+    print(max_index)
+
+
+# hashing_5()
+
+# ---------------------------------------------------------
