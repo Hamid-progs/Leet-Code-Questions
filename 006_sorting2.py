@@ -1,48 +1,100 @@
-# merge sort
-# time complexity O(log2(n))
-def merge_sort(a, low, high):
-    if low >= high:
-        return
+# Merge Sort :
+# time complexity o(log2(n))
+
+a = [3, 1, 2, 4, 1, 5, 2, 6, 4]
+
+def MergeSort(a,low,high):
+    if  low >= high:
+        return 
 
     mid = (low + high) // 2
 
-    merge_sort(a, low, mid)
-    merge_sort(a, mid + 1, high)
+    MergeSort(a,low,mid)
+    MergeSort(a,mid+1,high)
+    Merge(a,low,mid,high )
 
-    merge(a, low, mid, high)
 
-
-# merging code
-def merge(a, low, mid, high):
+def Merge(a,low ,mid ,high):
     temp = []
 
-    left = low
-    right = mid + 1
+    left = low 
+    right = mid+1
 
-    while left <= mid and right <= high:
-        if a[left] <= a[right]:
+    while left <= mid and right <=high:
+        if a[left] < a[right]:
             temp.append(a[left])
             left += 1
         else:
             temp.append(a[right])
             right += 1
-
+    
     while left <= mid:
         temp.append(a[left])
         left += 1
-
+    
     while right <= high:
         temp.append(a[right])
-        right += 1
+        right +=1
+    
+    for i in range(low,high+1):
+        a[i] = temp[i-low]
 
-    # Copy the merged elements back into the original array
-    for i in range(low, high + 1):
-        a[i] = temp[i - low]
+
+
+
 
 
 # Driver code
+# a = [3, 1, 2, 4, 1, 5, 2, 6, 4]
+# MergeSort(a, 0, len(a) - 1)
+# print(a)
+
+# =============================================
+
+# Bubble sort by recursion 
+
 a = [3, 1, 2, 4, 1, 5, 2, 6, 4]
+def BubbleSort(a,n= None):
+    if n is None:
+        n = len(a)
+    
+    # base case
+    if n == 1:
+        return
 
-merge_sort(a, 0, len(a) - 1)
+    swap = False
+    for i in range(n-1):
+        if a[i] > a[i+1]:
+            temp = a[i]
+            a[i] = a[i+1]
+            a[i+1]= temp
+            swap = True
+    
+    if not swap :
+        return
+    
+    BubbleSort(a,n-1)
 
+# BubbleSort(a,)
+# print(a)
+
+# ============================================================
+
+# insertion sort by recursion 
+def InsertionSort(a , i=1):
+
+    if i >= len(a):
+        return
+
+    j = i
+    while j > 0 and a[j-1] > a[j]:
+        temp = a[j-1]
+        a[j-1] = a[j]
+        a[j] = temp 
+        j = j-1
+
+    InsertionSort(a , i+1)
+
+a = [3, 1, 2, 4, 1, 5, 2, 6, 4]
+InsertionSort(a)
 print(a)
