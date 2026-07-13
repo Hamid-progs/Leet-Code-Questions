@@ -95,6 +95,46 @@ def InsertionSort(a , i=1):
 
     InsertionSort(a , i+1)
 
+# a = [3, 1, 2, 4, 1, 5, 2, 6, 4]
+# InsertionSort(a)
+# print(a)
+
+# =================================================
+
+# Quick Sort 
+
+def QuickSort(a,low,high):
+    if low < high:
+        partition_index = Helping_function(a,low,high)
+        QuickSort(a,low,partition_index-1)
+        QuickSort(a,partition_index+1,high)
+
+def Helping_function(a,low,high):
+    pivot = low
+    i = low 
+    j = high 
+
+    while i < j:
+        while a[i] <= a[pivot] and i <=high-1:
+            i += 1
+        while a[j] >= a[pivot] and j >=low+1:
+            j -= 1
+        if i < j:
+            temp = a[i]
+            a[i] = a[j]
+            a[j] = temp 
+    # this will take pivot to its position
+    temp = a[pivot]
+    a[pivot] = a[j]
+    a[j] = temp
+
+    return j 
+
 a = [3, 1, 2, 4, 1, 5, 2, 6, 4]
-InsertionSort(a)
-print(a)
+
+# print(a)
+# QuickSort(a,0,len(a)-1)
+# print(a)
+
+# =================================================
+
