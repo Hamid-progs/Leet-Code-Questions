@@ -83,3 +83,27 @@ def check_array_is_sorted(a = [8, 10, 5, 7,10, 9]):
     return True
 
 # print(check_array_is_sorted())
+
+# --------------------------------------------------------
+
+# Problem Statement: Given an integer array sorted in non-decreasing order, remove the duplicates in place such that each unique element appears only once. The relative order of the elements should be kept the same.
+
+# ---Solution1: ----
+# time complexity O(N)
+def remove_duplicates1(a = [1,1,2,2,2,3,3]):
+    a = set(a)
+    print(a)
+    
+# remove_duplicates()
+
+# ---Solution2---
+# time complexity O(N)
+def remove_duplicates2(a = [1,1,2,2,2,3,3]):
+    a.append(None)
+
+    b = list()
+
+    for i in range(len(a)-1):
+        if a[i] != a[i+1]:
+            b.append(a[i])
+    print(b)
