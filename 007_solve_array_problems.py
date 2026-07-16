@@ -107,3 +107,35 @@ def remove_duplicates2(a = [1,1,2,2,2,3,3]):
         if a[i] != a[i+1]:
             b.append(a[i])
     print(b)
+
+# remove_duplicates2()
+
+# -------------------------------------------------------------
+
+# Problem Statement: Given an integer array nums, rotate the array to the left by one.
+
+# ---Solution1:---
+# time complexity O(k x N) where k is number of roataions
+def rotate_array1(nums = [1, 2, 3, 4, 5], rotation = 1):
+
+    for i in range(0,rotation):
+        temp = nums[0]
+        for j in range(1,len(nums)):
+            nums[j-1] = nums[j]
+        nums[len(nums)-1] = temp
+
+# nums = [1, 2, 3, 4, 5]
+# rotate_array1(nums)
+# print(nums)
+
+# ---Solution2:---
+# time complexity is O(N)  optimal solution
+def rotate_array2(nums = [1, 2, 3, 4, 5],rotation = 1):
+    nums[:] = nums[rotation:] + nums[:rotation]
+    # nums[:] doesn't create a new list variable. Instead, 
+    # it replaces all the elements inside the existing list.
+
+
+# nums = [1, 2, 3, 4, 5]
+# rotate_array2(nums)
+# print(nums)
