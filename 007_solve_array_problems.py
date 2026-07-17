@@ -139,3 +139,70 @@ def rotate_array2(nums = [1, 2, 3, 4, 5],rotation = 1):
 # nums = [1, 2, 3, 4, 5]
 # rotate_array2(nums)
 # print(nums)
+
+# ---------------------------------------------------------
+# Problem Statement: Given an array of integers, rotating array of elements by k elements either left or right.
+
+# ---Solution1:---
+# time complexity is O(N)  optimal solution
+def rotate_array(nums,rotation,direction):
+    r = rotation % len(nums)
+
+    if direction == 'left' or direction == -1:
+        nums[:] =  nums[r:] + nums[:r]
+    elif direction == 'right' or direction == 1:
+        nums[:] = nums[-r:] + nums[:-r]
+    else:
+        raise ValueError("Direction must be 'left', 'right', -1, or 1")
+
+# use:
+#   rotation = 'left' or -1
+#   rotation = 'right' or 1
+
+# nums = [1, 2, 3, 4, 5]
+# rotate_array(nums,2,'left')
+# print(nums)
+
+# nums = [1, 2, 3, 4, 5]
+# rotate_array(nums,2,'right')
+# print(nums)
+
+# ------------------------------------------------------------------------
+
+# Problem Statement: You are given an array of integers, your task is to move all the zeros in the array to the end of the array and move non-negative integers to the front by maintaining their order.
+
+# ---Solution1---
+# time complexity O(N^2)
+def move_zeros1(a = [1,0,2,3,0,4,0,1]):
+    n = len(a)
+    i = 0
+    while i < n:
+        if a[i] == 0:
+            temp = a[i]
+            for j in range(i,n-1):
+                a[j] = a[j+1]
+            a[n-1] = temp
+            n -= 1
+        else:
+            i += 1
+    print(a)
+
+# move_zeros1()
+
+
+# ---Solution2---
+# time complexity O(N)   optimal solution
+def move_zeros2(a = [1,0,2,3,0,0,4,0,1]):
+    left = 0 
+
+    for right in range(len(a)):
+        if a[right] != 0:
+            # swap
+            temp = a[left]
+            a[left] = a[right]
+            a[right] = temp
+
+            left += 1
+    print(a)
+
+# move_zeros2()
