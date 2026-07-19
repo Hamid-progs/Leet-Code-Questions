@@ -206,3 +206,73 @@ def move_zeros2(a = [1,0,2,3,0,0,4,0,1]):
     print(a)
 
 # move_zeros2()
+
+# -------------------------------------------------------------------
+
+# Problem Statement: Given an array, 
+# and an element num the task is to find if num is present in the given array or not. 
+# If present print the index of the element or print -1.
+
+# ---Solution 1---
+# time complexity O(n) worst case , O(1) best case if element at first
+def linear_check1(a = [1,2,3,4,5] ):
+    print(a[3])
+    check = int(input("Enter a Number to check : "))
+
+    for i in range(len(a)):
+        if check == a[i]:
+            print(f'index: {i}')
+            check = 0
+
+    if check != 0:
+        print(-1)
+
+
+# --- Solution 2---
+# for creating the dictionary the time complexity will be O(N)
+# searching in dictionary is O(1) 
+
+# if you want mulitiple search the fist attempt will be O(N)
+# because of dictionary formation , the extracting value from 
+# dictionary will be O(1)
+
+def linear_check2(a = [1,2,3,4,5] ):
+    # time complexity is O(N)
+    mapp_ind = dict()
+    for i in range(len(a)):
+        mapp_ind[a[i]] = i
+
+    # time complexity O(1)
+    check = int(input("Enter a number: "))
+    print(mapp_ind.get(check,-1))
+
+# linear_check1()
+# linear_check2()
+
+# --------------------------------------------------------------
+
+# Given two sorted arrays, arr1, and arr2 of size n and m. Find the union of two sorted arrays.
+# The union of two arrays can be defined as the common and distinct elements in the two arrays.
+# NOTE: Elements in the union should be in ascending order.
+
+# --- Solution 1---
+# time complexity is O(N x k)
+def union1(a1 = [1,2,3,4,5],a2 = [2,3,4,4,5]):
+    uni = []
+
+    if len(a1) > len(a2):
+        min_a = a2   # min lenght
+        max_a = a1   # max length
+    else:
+        min_a = a1   # min lenght
+        max_a = a2   # max lenght
+        
+    for i in range(len(min_a)):
+        for j in range(len(max_a)):
+            if min_a[i] == max_a[j]:
+                uni.append(min_a[i])
+                break  
+    print(uni)
+
+# union1()
+    
