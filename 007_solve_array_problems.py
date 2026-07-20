@@ -275,4 +275,44 @@ def union1(a1 = [1,2,3,4,5],a2 = [2,3,4,4,5]):
     print(uni)
 
 # union1()
-    
+
+# --------------------------------------------------------------------------
+
+# Given an array arr[] of size n-1 with distinct integers in the range of [1, n]. This array represents a permutation of the integers from 1 to n with one element missing. Find the missing element in the array.
+
+# time complexity will be O(nlogn + total number of missing values)
+# if the array is already sorted (n + total number of missing values)
+def find_missing_value(a = [1, 2,3,5,7]):
+    a.sort()
+
+    for i in range(len(a)-1):
+        if a[i+1] - a[i] > 1:
+            N = a[i+1] - a[i]
+            for n in range(1,N):
+                print(a[i] + n)
+
+# find_missing_value()
+
+# ------------------------------------------------
+
+# Given an array that contains only 1 and 0 return the count of maximum consecutive ones in the array.
+
+
+# time complexity is O(N)  best and optimal solution
+def consective_ones(a = [1, 0, 1, 1, 0, 1]):
+    max_count = 0
+    c = 0
+    for i in range(len(a)):
+        if a[i] == 1:
+            c += 1
+        else:
+            if max_count < c:
+                max_count = c
+            c = 0
+
+    if max_count < c:
+        max_count = c
+
+    print(max_count)
+
+# consective_ones()
