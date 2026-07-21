@@ -316,3 +316,45 @@ def consective_ones(a = [1, 0, 1, 1, 0, 1]):
     print(max_count)
 
 # consective_ones()
+
+# ------------------------------------------------------------------------
+
+# Given a non-empty array of integers arr, every element appears twice except for one.
+# Find that single one
+
+# no limitation give every singel number
+# time complexity O(nlog(n) + n) or O(nlogn)
+def find_singel_element(a = [4,1,6,2,1,2]):
+    a.sort()
+
+    check = a[0]
+    c = 0
+    for i in range(len(a)):
+        if a[i] > check:
+            if c == 1:
+                print(check)
+
+            check = a[i]
+            c = 0
+
+        if a[i] == check:
+            c += 1
+        
+    if c == 1:
+        print(check)
+
+# find_singel_element()
+
+
+# time complexity is O(N) optimal solution 
+# NOTE limitation : 
+# use full when the question grauntee having only a single number in array else are twice
+def XOR_method(a = [4,1,2,1,2]):
+
+    ans = 0 
+    for num in a:
+        ans = ans ^ num 
+
+    print(ans)
+
+# XOR_method()
