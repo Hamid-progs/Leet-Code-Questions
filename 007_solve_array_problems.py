@@ -358,3 +358,38 @@ def XOR_method(a = [4,1,2,1,2]):
     print(ans)
 
 # XOR_method()
+
+# -----------------------------------------------------------
+
+# nums = [10, 5, 2, 7, 1, 9]
+def longest_subArray(nums = [-3, 2, 1],k = 6):
+
+    nums.sort()
+    max_length = 0
+    result = []
+
+    for i  in range(len(nums)-1,-1,-1):
+        check = k
+        temp = []
+        
+        if nums[i] <= check:
+            temp.append(nums[i])
+            check -= nums[i]
+
+        for j in range(i-1,-1,-1):
+            if nums[j] <= check:
+                temp.append(nums[j])
+                check -= nums[j]
+
+            if check == 0:
+                break
+        if max_length < len(temp):
+            max_length = len(temp)
+            result = temp
+
+    print(f'Sub-array: {result}') 
+    print('length    : ',max_length)    
+
+longest_subArray()
+    
+    
