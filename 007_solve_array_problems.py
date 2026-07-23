@@ -359,37 +359,47 @@ def XOR_method(a = [4,1,2,1,2]):
 
 # XOR_method()
 
-# -----------------------------------------------------------
+# -------------------------------------------------------------------------------------------
 
 # nums = [10, 5, 2, 7, 1, 9]
-def longest_subArray(nums = [-3, 2, 1],k = 6):
 
-    nums.sort()
+# ---Solution 1---
+# time complexity is O(N^2)
+def longest_subArray1(nums = [10,5,2,7,1,9],k = 15):
     max_length = 0
-    result = []
 
-    for i  in range(len(nums)-1,-1,-1):
-        check = k
-        temp = []
-        
-        if nums[i] <= check:
-            temp.append(nums[i])
-            check -= nums[i]
+    for i in range(len(nums)):
+        sum = 0
+        for j in range(i,len(nums)):
+            sum += nums[j]
+            if sum == k:
+                max_length = max(max_length,j-i+1)
 
-        for j in range(i-1,-1,-1):
-            if nums[j] <= check:
-                temp.append(nums[j])
-                check -= nums[j]
+    print(max_length)
 
-            if check == 0:
-                break
-        if max_length < len(temp):
-            max_length = len(temp)
-            result = temp
+# longest_subArray1()
 
-    print(f'Sub-array: {result}') 
-    print('length    : ',max_length)    
+# ---Solution 2---
+# time complexity O(N) better solution 
+def longest_subArray2(a = [10,5,2,7,1,9],k = 15):
 
-longest_subArray()
-    
-    
+    map_sum = {}
+    sum = 0
+    max_length = 0
+
+    for i in range(len(a)):
+        sum += a[i]
+        if sum == k:
+            max_length = max(max_length,i+1)
+
+        rem = sum - k
+        if rem in map_sum :
+            length = i - map_sum[rem]
+            max_length = max(max_length , length)
+
+        if sum not in map_sum:
+            map_sum[sum] = i 
+
+    print(max_length)
+
+longest_subArray2()
