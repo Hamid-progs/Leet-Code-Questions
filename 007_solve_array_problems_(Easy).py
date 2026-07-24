@@ -402,4 +402,24 @@ def longest_subArray2(a = [10,5,2,7,1,9],k = 15):
 
     print(max_length)
 
-longest_subArray2()
+# longest_subArray2()
+
+# ---Solution 3--- 
+# Time complexity O(N) Best Optimal Solution
+def longest_subArray3(a = [10,5,2,6,1,1,9],k = 15):
+    sum = 0
+    max_length = 0
+    i = 0
+    
+    for j in range(len(a)):
+        sum += a[j]
+        if sum > k :
+            max_length = max(max_length, j-i)
+            sum -= a[i]
+            i += 1
+
+    print(max_length)
+
+# longest_subArray3()
+
+
