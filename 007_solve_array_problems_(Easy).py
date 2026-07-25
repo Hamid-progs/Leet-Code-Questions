@@ -422,4 +422,33 @@ def longest_subArray3(a = [10,5,2,6,1,1,9],k = 15):
 
 # longest_subArray3()
 
+#---------------------------------------------------
+
+# Problem Statement: Given an array containing both positive and negative integers, 
+# we have to find the length of the longest subarray with the sum of all elements equal to zero.
+
+
+# time complexity O(N) best optimal solution 
+def longest_subArray4(a = [6, -2, 2, -8, 1, 7, 4, -10 ],k = 0):
+    prefix_sum = 0
+    max_length = 0
+    mp = {}
+
+    for i in range(len(a)):
+        prefix_sum += a[i]
+
+        if prefix_sum == k:
+            max_length = i + 1
+
+        rem = prefix_sum - k
+
+        if rem in mp:
+            max_length = max(max_length, i - mp[rem])
+
+        if prefix_sum not in mp:      # store first occurrence only
+            mp[prefix_sum] = i
+
+    print(max_length)
+
+# longest_subArray4()
 
