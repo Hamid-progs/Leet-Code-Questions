@@ -61,4 +61,19 @@ def check_pair3(a = [2,4,6,8,11],k=15):
     return False
 
 
-check_pair3()
+# check_pair3()
+
+# ------------------------------------------------------
+
+# Problem Statement: 
+# Given an array nums consisting of only 0, 1, or 2. Sort the array in non-decreasing order.
+# The sorting must be done in-place, without making a copy of the original array.
+
+# time complexity O(NlogN)
+def sort_array1(nums = [1, 0, 2, 1, 0]):
+    nums.sort()
+    print(nums)
+
+nums = [1, 0, 2, 1, 1]
+# sort_array1(nums)
+
