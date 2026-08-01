@@ -157,3 +157,22 @@ def majority2(nums = [7, 0, 0, 1, 7, 7, 2, 7, 7]):
         print("NO majority element!")
 
 # majority2()
+
+# --------------------------------------------------------------
+
+# Problem Statement: 
+# Given an integer array nums,
+# find the subarray with the largest sum and 
+# return the sum of the elements present in that subarray.
+
+# time complexity O(N) best solution
+def max_sum_subarray(nums = [-5,4,6]):
+    current_sum = nums[0]
+    max_sum = nums[0]
+
+    for i in range(1,len(nums)):
+        current_sum = max(nums[i],current_sum+nums[i])
+        max_sum = max(max_sum,current_sum)
+    print(max_sum)
+
+# max_sum_subarray()
