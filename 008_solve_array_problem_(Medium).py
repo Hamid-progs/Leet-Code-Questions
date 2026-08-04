@@ -201,3 +201,50 @@ def stock_profits(prices = [7,6,4,3,1]):
     print(max_profit)
 
 # stock_profits()
+
+# ------------------------------------------------------------
+
+# Problem Statement: There’s an array ‘A’ of size ‘N’ with 
+# an equal number of positive and negative elements. Without altering
+#  the relative order of positive and negative elements,
+# you must return an array of alternately positive and negative values.
+
+# ---Solution 1---
+# time complexity O(N) + O(N)  or O(N)
+# space complexity O(N)
+def pos_neg_element1(a = [1,2,-3,-1,-2,3]):
+    pos = []
+    neg = []
+    for i in range(len(a)):
+        if a[i] >= 0:
+            pos.append(a[i])
+        else:
+            neg.append(a[i])
+
+    for i in range(len(a)//2):
+        a[2*i] = pos[i]
+        a[(2*i)+1] = neg[i]
+
+    print(a)
+
+pos_neg_element1()
+
+# ---Solution 2---
+# time complexity O(N)
+# space complexity O(N)
+def pos_neg_element2(a = [1,2,-3,-1,-2,3]):
+    n = len(a)
+    ans = [0]*n
+    pos = 0
+    neg = 1
+
+    for i in range(len(a)):
+        if a[i] < 0:
+            ans[neg] = a[i]
+            neg += 2
+        else:
+            ans[pos] = a[i]
+            pos += 2
+    print(ans)
+
+# pos_neg_element2()
