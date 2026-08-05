@@ -248,3 +248,36 @@ def pos_neg_element2(a = [1,2,-3,-1,-2,3]):
     print(ans)
 
 # pos_neg_element2()
+
+# ------------------------------------------------------------
+
+# Problem Statement: Given an array Arr[] of integers, 
+# rearrange the numbers of the given array into the lexicographically next greater permutation of numbers.
+# If such an arrangement is not possible, it must rearrange to the lowest possible order
+# (i.e., sorted in ascending order).
+
+# time complexity O(N) or O(2N)
+def next_permutation(a = [3,2,1]):
+    index = -1
+    n = len(a)
+
+    for i in range(n-2,-1,-1):
+        if a[i] < a[i+1]:
+            index = i
+            break
+
+    if index == -1 :
+        a = a[::-1]
+        return a 
+
+    for  i in range(n-1,index,-1):
+        if a[i] > a[index]:
+            temp = a[i]
+            a[i] = a[index]
+            a[index] = temp 
+            break
+
+    a[index+1:] = a[index+1:][::-1]
+    return a
+
+# print(next_permutation())
