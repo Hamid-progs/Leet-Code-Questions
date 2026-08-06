@@ -281,3 +281,51 @@ def next_permutation(a = [3,2,1]):
     return a
 
 # print(next_permutation())
+
+# -------------------------------------------------------------------------------------------------------
+
+# Problem :
+# select leaders from the given element 
+# leaders is the element whose right side contain small elements
+
+# ---Solution 1---
+# time complexity O(N^2)
+# space complexity O(N) for storing the result
+def leaders1(a = [10,22,12,3,0,6]):
+    leaders = []
+
+    for i in range(len(a)):
+        l = a[i]
+        for j in range(i+1,len(a)):
+            if i == len(a)-1:
+                leaders.apped(l)
+
+            if l < a[j]:
+                l=-1
+                break
+            
+        if l != -1:
+            leaders.append(l)
+
+    print(leaders)
+
+# leaders1()
+
+# ---Soulution 2---
+# time complexity O(N)
+# space complexity O(N) because we are storng the results
+def leaders2(a = [10,22,12,3,0,6]):
+    max_el = a[-1]
+    leaders = []
+    leaders.append(max_el)
+    for i in range(len(a)-2,-1,-1):
+        if a[i] > max_el:
+            max_el = a[i]
+            leaders.append(max_el)
+
+    # the result is in right to left fashion
+    print(leaders)
+    # if you want left to right fashion reverse the list
+    # print(leaders[::-1])
+
+# leaders2()
