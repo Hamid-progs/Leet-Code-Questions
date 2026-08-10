@@ -337,9 +337,11 @@ def leaders2(a = [10,22,12,3,0,6]):
 # Return the length of the longest sequence of consecutive integers. 
 # The integers in this sequence can appear in any order.
 
+
+# ---Solution 1---
 # time complexity O(nlogn)
 # space complexity O(n)
-def max_consecutive_sequence(nums = [100, 4, 200, 1, 3, 2]):
+def max_consecutive_sequence1(nums = [100, 4, 200, 1, 3, 2]):
     nums.sort()
     print(nums)
     el = nums[0]
@@ -365,3 +367,24 @@ def max_consecutive_sequence(nums = [100, 4, 200, 1, 3, 2]):
 
 # max_consecutive_sequence()
 
+# ---Solution 2---
+# time complexity O(N)
+# space complexity O(N)
+def max_consecutive_sequence2(nums = [100, 4, 200, 1, 3, 2]):
+    st = set(nums)
+    longest = 0
+
+    for x in st:
+
+        # x is the beginning of a sequence
+        if x - 1 not in st:
+
+            cnt = 1
+
+            while x + 1 in st:
+                x += 1
+                cnt += 1
+
+            longest = max(longest, cnt)
+
+    print(longest)
