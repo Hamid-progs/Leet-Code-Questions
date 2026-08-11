@@ -388,3 +388,63 @@ def max_consecutive_sequence2(nums = [100, 4, 200, 1, 3, 2]):
             longest = max(longest, cnt)
 
     print(longest)
+
+# ----------------------------------------------------------------
+
+# Problem Statement: 
+# Given a matrix if an element in the matrix is 0 then you will have 
+# to set its entire column and row to 0 and then return the matrix..
+
+# ---Solution 1---
+# time complexity O(N^4)
+def zero_row_col1(matrix = [
+    [0,1,2,0],
+    [3,4,5,2],
+    [1,3,1,5]
+]):
+    zero = {}
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if matrix[i][j] == 0:
+                zero[f'{i}{j}'] = [i,j]
+
+    for key,val in zero.items():
+        row,col = val
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                if col == j or row == i:
+                    matrix[i][j] = 0
+
+    for m in matrix:
+        print(m)
+    # print(matrix)
+
+# zero_row_col1()
+
+# ---Solution 2---
+# time complexity O(N^2) better case!
+def zero_row_col2(matrix = [
+    [0,1,2,0],
+    [3,4,5,2],
+    [1,3,1,5]
+]):
+    row = set()
+    col = set()
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if matrix[i][j] == 0:
+                row.add(i)
+                col.add(j)
+
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if j in col or i in row:
+                matrix[i][j] = 0
+
+    for m in matrix:
+        print(m)
+    # print(matrix)
+
+# zero_row_col2()
