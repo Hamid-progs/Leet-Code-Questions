@@ -448,3 +448,30 @@ def zero_row_col2(matrix = [
     # print(matrix)
 
 # zero_row_col2()
+
+
+# -----------------------------------------------------------------------------
+
+# problem : Rotate Matrix 90 degree clock wise!
+
+def rotate1(matrix=[
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]):
+    """
+    Do not return anything, modify matrix in-place instead.
+    """
+    mp = {}
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            mp[matrix[i][j]] = [j, len(matrix)-1-i]
+                
+    for key, val in mp.items():
+        i,j = val
+        matrix[i][j] = key
+
+# rotate1()
+
+
