@@ -450,28 +450,55 @@ def zero_row_col2(matrix = [
 # zero_row_col2()
 
 
-# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------
 
-# problem : Rotate Matrix 90 degree clock wise!
+# Problem:
+# Rotate matrix clockwise 90 degree
 
-def rotate1(matrix=[
-    [1,2,3],
-    [4,5,6],
-    [7,8,9]
-]):
-    """
-    Do not return anything, modify matrix in-place instead.
-    """
-    mp = {}
+# ---Solution 1---
+# time complexity O(N^2)
+# space complxity O(N)
+def rotate1(matrix= [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+    ]):
+    n = len(matrix)
+    mp = []
 
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            mp[matrix[i][j]] = [j, len(matrix)-1-i]
-                
-    for key, val in mp.items():
-        i,j = val
-        matrix[i][j] = key
+    for i in range(n):
+        for j in range(n):
+            mp.append((j,n-1-i,matrix[i][j]))
 
-# rotate1()
+    for i,j,val in mp:
+        matrix[i][j] = val
 
 
+# ---Solution 2---    0ptimal solution!!!!
+# time complexity O(N^2)
+# space complexity O(1)
+def rotate2(matrix= [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+    ]):
+    n = len(matrix)
+
+    # transpose
+    for i in range(n):
+        for j in range(i+1,n):
+            # swaping
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+    for row in matrix:
+        row.reverse()
+
+
+matrix= [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+]
+rotate1(matrix)
+for row in matrix:
+    print(row)
