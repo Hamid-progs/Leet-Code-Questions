@@ -494,11 +494,49 @@ def rotate2(matrix= [
         row.reverse()
 
 
-matrix= [
-        [1,2,3],
-        [4,5,6],
-        [7,8,9]
+# matrix= [
+#         [1,2,3],
+#         [4,5,6],
+#         [7,8,9]
+# ]
+# rotate1(matrix)
+# for row in matrix:
+#     print(row)
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Problem:
+# print matrix spiral
+
+matrix = [
+    [1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12],
+    [13,14,15,16]
 ]
-rotate1(matrix)
-for row in matrix:
-    print(row)
+
+top = 0
+bottom = len(matrix[-1])-1
+left = 0
+right = len(matrix)
+
+while bottom >= len(matrix) // 2:
+    for i in range(left,right):
+        print(matrix[top][i])
+
+    top += 1
+
+    for i in range(top,bottom):
+        print(matrix[i][bottom])
+
+    right -= 1
+
+    for i in range(right,left - 1,-1):
+        print(matrix[bottom][i])
+
+    bottom -= 1
+
+    for i in range(bottom,top - 1, -1):
+        print(matrix[i][left])
+
+    left += 1
