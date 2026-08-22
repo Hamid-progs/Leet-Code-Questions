@@ -507,36 +507,62 @@ def rotate2(matrix= [
 
 # Problem:
 # print matrix spiral
-
-matrix = [
+def spiral(matrix = [
     [1,2,3,4],
     [5,6,7,8],
     [9,10,11,12],
     [13,14,15,16]
-]
+]):
+    top = 0
+    bottom = len(matrix)-1
+    left = 0
+    right = len(matrix[0])
 
-top = 0
-bottom = len(matrix[-1])-1
-left = 0
-right = len(matrix)
+    while top <= bottom and left <= right:
+        for i in range(left,right):
+            print(matrix[top][i])
 
-while bottom >= len(matrix) // 2:
-    for i in range(left,right):
-        print(matrix[top][i])
+        top += 1
 
-    top += 1
+        for i in range(top,bottom):
+            print(matrix[i][bottom])
 
-    for i in range(top,bottom):
-        print(matrix[i][bottom])
+        right -= 1
 
-    right -= 1
+        if top <= bottom:
+            for i in range(right,left - 1,-1):
+                print(matrix[bottom][i])
 
-    for i in range(right,left - 1,-1):
-        print(matrix[bottom][i])
+            bottom -= 1
 
-    bottom -= 1
+        if left <= right:
+            for i in range(bottom,top - 1, -1):
+                print(matrix[i][left])
 
-    for i in range(bottom,top - 1, -1):
-        print(matrix[i][left])
+            left += 1
 
-    left += 1
+# spiral()
+
+
+# ------------------------------------------------------------------------------------
+
+# Problem Statement:
+# Given an array of integers and an integer k, return the total number of subarrays 
+# whose sum equals k. A subarray is a contiguous non-empty sequence of elements within an array.
+
+# time complexity is O(N)
+# space complexity is O(N)
+def countsum(a = [1,2,3],k = 3):
+    mp = {0:1}
+    prefix_sum = 0
+    count = 0
+
+    for i in range(len(a)):
+        prefix_sum += a[i]
+
+        if prefix_sum - k in mp:
+            count += mp[prefix_sum-k]
+
+        mp[prefix_sum] = mp.get(prefix_sum, 0) + 1
+
+    print(count)
